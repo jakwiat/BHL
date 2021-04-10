@@ -5,5 +5,7 @@
   "data": {
     "num_cols": 572,
     "num_rows": 11086
-  }
+  },
+  "classes": ["STANDING", "WALKING_UPSTAIRS", "LAYING", "WALKING", "SITTING", "WALKING_DOWNSTAIRS"],
+  "empty_values": 32636
 }
