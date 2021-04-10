@@ -20,10 +20,13 @@ def data_reader(filename):
         return attribute_names, data
 
 
-dane = pd.read_csv('final_train.csv')
+df = pd.read_csv('final_train.csv')
 #attribute_names, data = data_reader('final_train.csv')
-dane = dane.iloc[:,1:]
-klasy = dane.loc[:,"Activity"]
+df = df.iloc[:,1:]
+klasy = df.loc[:,"Activity"]
 print(f" Classes: {set(klasy)} ")
 print(klasy.value_counts(), end="\n\n")
-print(dane.head())
+filter_col = [col for col in df if col.startswith('foo')]
+
+print(df.head())
+
