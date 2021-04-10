@@ -10,7 +10,6 @@ def read_file(filename, best_cols):
         wazne = []
         wazne.append("Activity")
         wazne.extend(list(i_f.head(best_cols).iloc[:, 0]))
-        print(wazne)
         df = df[wazne]
     klasy = df.loc[:, "Activity"]
     return df, klasy
@@ -32,3 +31,16 @@ def prepare_data(filename, test_size=0.3, best_cols=0):
     columns = get_column_names(df)
     v_train, v_test, t_train, t_test = train_test_split(vals, tags, test_size=test_size)
     return v_train, v_test, t_train, t_test, columns
+
+
+def prepare_test_data(test_data):
+    df = test_data.iloc[:, 1:]
+    i_f = pd.read_csv('important_fts.csv')
+    wazne = []
+    wazne.append("Activity")
+    wazne.extend(list(i_f.head(200).iloc[:, 0]))
+    print(wazne)
+    df = df[wazne]
+    df = df.fillna(df.mean())
+    vals = df.iloc[:, 1:]
+    return vals
