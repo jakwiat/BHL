@@ -1,4 +1,7 @@
 import csv
+import numpy as np
+import pandas as pd
+
 
 CLASSES = ["STANDING", "WALKING_UPSTAIRS", "LAYING", "WALKING", "SITTING", "WALKING_DOWNSTAIRS"]
 
@@ -14,11 +17,17 @@ def data_reader(filename):
             else:
                 data.append(row[1:])
             line_count += 1
+        print(line_count)
+        print(attribute_names)
+        print(data[0])
 
         return attribute_names, data
 
 
-attribute_names, data = data_reader('final_train.csv')
-
-print(attribute_names)
-print(data[0])
+dane = pd.read_csv('final_train.csv')
+#attribute_names, data = data_reader('final_train.csv')
+dane = dane.iloc[:,1:]
+klasy = dane.loc[:,"Activity"]
+print(f" Classes: {set(klasy)} ")
+print(klasy.value_counts(), end="\n\n")
+print(dane.head())
