@@ -5,5 +5,12 @@
   "data": {
     "num_cols": 572,
     "num_rows": 11086
-  }
+  },
+  "klasy": {
+    "LAYING": 2167,
+    "SITTING": 2019,
+    "STANDING": 1979,
+    "WALKING": 1900,
+    "WALKING_UPSTAIRS": 1633,
+    "WALKING_DOWNSTAIRS": 1388
 }
