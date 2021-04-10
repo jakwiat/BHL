@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
 
-v_train, v_test, t_train, t_test, colnames = prepare_data("final_train.csv")
+v_train, v_test, t_train, t_test, colnames = prepare_data("final_train.csv", best_cols=50)
 
 print("data prepared")
 

@@ -4,7 +4,7 @@ from sklearn import metrics
 from data_reader import prepare_data
 
 
-v_train, v_test, t_train, t_test, _ = prepare_data("final_train.csv")
+v_train, v_test, t_train, t_test, _ = prepare_data("final_train.csv", best_cols=50)
 
 print("data prepared")
 
