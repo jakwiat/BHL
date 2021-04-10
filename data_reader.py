@@ -1,9 +1,13 @@
-from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn import metrics
+from sklearn.ensemble import RandomForestClassifier
+import matplotlib.pyplot as plt
+import seaborn as sns
 import pandas as pd
+from sklearn import datasets
 
-
+#Load dataset
+iris = datasets.load_iris()
 df = pd.read_csv('final_train.csv')
 df = df.iloc[:,1:]
 klasy = df.loc[:,"Activity"]
@@ -12,8 +16,10 @@ print(klasy.value_counts(), end="\n\n")
 time_series_cols = [col for col in df if col.startswith('t') or col == "Activity"]
 print(df[time_series_cols].head())
 colnames = []
-for col in df[time_series_cols].columns:
-    colnames.append(col)
+for col in df.columns:
+    if col != "Activity":
+        colnames.append(col)
+print(colnames)
 print(df.isna().sum().sum())
 df = df.fillna(df.mean())
 print(df.isna().sum().sum())
@@ -30,3 +36,14 @@ t_pred = clf.predict(v_test)
 # Model Accuracy, how often is the classifier correct?
 print("Accuracy:",metrics.accuracy_score(t_test, t_pred))
 
+feature_imp = pd.Series(clf.feature_importances_, index=colnames).sort_values(ascending=False)
+print(feature_imp.head(20))
+
+# Creating a bar plot
+sns.barplot(x=feature_imp, y=feature_imp.index)
+# Add labels to your graph
+plt.xlabel('Feature Importance Score')
+plt.ylabel('Features')
+plt.title("Visualizing Important Features")
+plt.legend()
+#plt.show()
