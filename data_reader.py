@@ -1,5 +1,7 @@
 import csv
 
+CLASSES = ["STANDING", "WALKING_UPSTAIRS", "LAYING", "WALKING", "SITTING", "WALKING_DOWNSTAIRS"]
+
 
 def data_reader(filename):
     with open(filename) as f:
@@ -12,11 +14,11 @@ def data_reader(filename):
             else:
                 data.append(row[1:])
             line_count += 1
-            print(line_count)
-        print(attribute_names)
-        print(data[0])
 
         return attribute_names, data
 
 
 attribute_names, data = data_reader('final_train.csv')
+
+print(attribute_names)
+print(data[0])
