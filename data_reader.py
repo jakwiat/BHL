@@ -26,7 +26,7 @@ df = df.iloc[:,1:]
 klasy = df.loc[:,"Activity"]
 print(f" Classes: {set(klasy)} ")
 print(klasy.value_counts(), end="\n\n")
-filter_col = [col for col in df if col.startswith('foo')]
+time_series_cols = [col for col in df if col.startswith('t') or col == "Activity"]
+print(df[time_series_cols].head())
 
-print(df.head())
 
